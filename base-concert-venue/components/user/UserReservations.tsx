@@ -11,23 +11,42 @@ import type { ReservationWithShow } from "@/lib/features/reservations/types";
 import { LoadingSpinner } from "../_common/LoadingSpinner";
 
 const getUserReservations = async (
-  userId?: number
+  userId?: number,
+  seatCount?: number
 ): Promise<Array<ReservationWithShow> | null> => {
   if (!userId && typeof userId !== "number") return Promise.resolve(null);
+  const url = `/api/${routes.users}/${userId}/reservations`;
+  console.log("Request URL:", url); // Log the request URL
   const data = await axiosInstance.get<
     null,
     { data: { userReservations: Array<ReservationWithShow> } }
   >(`/api/${routes.users}/${userId}/reservations`);
-
+  // const data = {
+  //   data: {
+  //     userReservations: [
+  //       {
+  //         userId: 0,
+  //         show: {
+  //           band: {
+  //             name: "The Band",
+  //           },
+  //           scheduledAt: "2022-12-31T23:59:59.999Z",
+  //           availableSeatCount: seatCount,
+  //         },
+  //         reservedSeatCount: seatCount,
+  //       },
+  //     ],
+  //   },
+  // };
   return data.data.userReservations;
 };
 
-export const UserReservations = ({ userId }: { userId: number }) => {
+export const UserReservations = ({ userId, seatCount }: { userId: number, seatCount: number }) => {
   const {
     data: userReservations,
     error,
     isValidating,
-  } = useSWR(`user/${userId}/reservations`, () => getUserReservations(userId), {
+  } = useSWR(`user/${userId}/reservations`, () => getUserReservations(userId, seatCount), {
     fallbackData: [],
   });
 
