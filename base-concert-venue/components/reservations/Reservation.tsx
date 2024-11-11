@@ -27,15 +27,14 @@ import { formatDate } from "@/lib/features/shows/utils";
 const DEFAULT_TICKET_COUNT = 2;
 const FIFTEEN_SECONDS = 15 * 1000;
 
-const getShowsViaAPI = async (showId: number, seatCount: number) => {
+const getShowsViaAPI = async (showId: number ) => {
   console.log("showId", showId);
   const { data } = await axiosInstance.get(`/api/${routes.shows}/${showId}`);
-  return data;
+  return data.show;
 };
 
 interface ReservationProps {
   showId: number;
-  seatCount: number;
   submitPurchase: ({
     reservationId,
     reservedSeatCount,
@@ -47,7 +46,6 @@ interface ReservationProps {
 
 export const Reservation = ({
   showId,
-  seatCount,
   submitPurchase,
 }: ReservationProps) => {
   const [reservedSeatCount, setReservedSeatCount] =
@@ -61,7 +59,7 @@ export const Reservation = ({
     isValidating,
   } = useSWR<Show>(
     showId || showId === 0 ? `/api/show/${showId}` : null,
-    () => getShowsViaAPI(showId, seatCount),
+    () => getShowsViaAPI(showId),
     {
       revalidateOnMount: true,
       revalidateOnReconnect: true,

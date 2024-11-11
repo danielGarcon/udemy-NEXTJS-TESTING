@@ -6,7 +6,9 @@ import { filenames, writeJSONToFile } from "@/lib/db/db-utils";
 import { db } from "../db";
 
 export const resetDb = async () => {
-  const safeToReset = process.env.NODE_ENV === "test";
+  // jest doesn't automatically set NODE_ENV to test
+  // so we need to check if we're in test environment in cypress as well
+  const safeToReset = process.env.NODE_ENV === "test" || process.env.CYPRESS;
   if (!safeToReset) {
     console.log("resetDb can only be used in test environment");
   }

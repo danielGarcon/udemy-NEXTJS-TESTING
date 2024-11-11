@@ -1,8 +1,6 @@
 import { Box, Heading } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
-
 import { UserReservations } from "@/components/user/UserReservations";
-
 // data strategy: Client-Side Rendering with SWR (within UserReservations component)
 // (static pages or ISR doesn't make sense; only one user is using this page!
 // no advantage to caching.)

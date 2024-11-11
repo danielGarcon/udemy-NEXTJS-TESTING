@@ -11,8 +11,10 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
   //   to check the user is authorized to make changes to bands
   // in this app, this endpoint will be hit by testing directly to test on-demand ISR revalidation
 
+  console.log('env:', process.env.REVALIDATION_SECRET);
   // Check for secret to confirm this is a valid request
   if (req.query.secret !== process.env.REVALIDATION_SECRET) {
+    console.log('req.query.secret:', req.query.secret);
     return res.status(401).json({ message: "Invalid revalidation token" });
   }
 
@@ -23,7 +25,7 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
   // revalidate bands page for ISR
   // note: this will change to `res.revalidate` when
   // this feature is out of beta
-  await res.unstable_revalidate("/bands");
+  res.revalidate('/bands')
   return res.json({ band: addedBand, revalidated: true });
 });
 

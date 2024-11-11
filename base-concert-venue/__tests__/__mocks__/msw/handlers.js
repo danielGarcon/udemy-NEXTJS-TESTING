@@ -24,6 +24,7 @@ export const handlers = [
       const { userId } = req.params;
       console.log('userId: \t', userId);
       const userReservations = Number(userId) === 1 ? fakeUserReservations : [];
+      console.log('userReservations: \t', userReservations);
       return res(ctx.json({ userReservations }));
     }
   ),

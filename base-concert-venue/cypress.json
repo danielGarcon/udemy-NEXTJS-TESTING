@@ -1,1 +1,10 @@
-{}
+{
+    "baseUrl": "http://localhost:3000",
+    "defaultCommandTimeout": 10000,
+    "pageLoadTimeout": 60000,
+    "requestTimeout": 10000,
+    "responseTimeout": 30000,
+    "env": {
+      "REVALIDATION_SECRET": "f20325e3f402c0f8aa6b57108202f3e831ca79500a5179729a95f8aa7d23eb7f"
+    }
+  }

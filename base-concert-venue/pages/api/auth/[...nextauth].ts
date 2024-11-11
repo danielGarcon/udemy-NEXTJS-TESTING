@@ -49,7 +49,7 @@ export default NextAuth({
       // reference: https://next-auth.js.org/configuration/callbacks#jwt-callback
       // Persist the JWT token to the token right after signin
       if (user) {
-        token.user = user.user;
+        token.user = 'h^&*assb1'
       }
       return token;
     },
