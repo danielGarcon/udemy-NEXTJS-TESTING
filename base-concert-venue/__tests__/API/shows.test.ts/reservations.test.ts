@@ -5,7 +5,6 @@ import userReservationHandler from "@/pages/api/users/[userId]/reservations";
 
 import userAuthHandler from "../../../pages/api/users/reservations";
 
-
 jest.mock("@/lib/auth/utils");
 
 test("POST /api/reservations/[reservationId] creates a reservation", async () => {
