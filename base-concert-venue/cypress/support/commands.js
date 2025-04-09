@@ -22,3 +22,23 @@ Cypress.Commands.add("resetDbAndClearIsrCache", () => {
   // });
   cy.request("GET", `/api/revalidate?secret=${secret}`);
 });
+
+Cypress.Commands.add("signIn", (email, password) => {
+  // for many auth systems this would post to an API and not a UI
+  cy.visit("/auth/signin");
+
+  // fill out the sign in form
+  cy.findByLabelText(/email address/i)
+    .clear()
+    .type(email);
+  cy.findByLabelText(/password/i)
+    .clear()
+    .type(password);
+
+  cy.findByRole("main", { timeout: 30000 }).within(() => {
+    cy.findByRole("button", { name: /sign in/i, timeout: 30000 }).click();
+  });
+
+  // check that the welcome message shows
+  /// cy.findByRole("heading", { name: /welcome/i }).should("exist");
+});

@@ -8,7 +8,7 @@ it("skips client-side bundle", () => {
     });
 
   // get length
-  cy.findAllByText(/2022 Apr 1[567]/i).should("have.length", 3);
+  cy.findAllByText(/2024 Oct 1[34567]/i).should("have.length", 3);
 
   // for some reason the line below isn't working, so in the future, use the line above
   // cy.findAllByText(/2022 Apr 1[456]/i).toHaveLength(3);

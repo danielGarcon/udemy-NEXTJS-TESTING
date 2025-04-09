@@ -10,6 +10,7 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
   const { reservationId } = req.query;
   const { seatCount, userId, showId } = req.body;
   const tokenIsValid = await validateToken(req);
+  console.log("tokenIsValid", tokenIsValid);
   if (!tokenIsValid) {
     return res.status(401).json({ message: "user not authenticated" });
   }

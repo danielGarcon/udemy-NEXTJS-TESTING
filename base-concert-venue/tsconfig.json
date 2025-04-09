@@ -19,6 +19,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.setup.js", "__tests__/UI/Hhome.test.js", "__tests__/UI/cypress/integration/isr-validation.test.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.setup.js", "__tests__/UI/Hhome.test.js", "__tests__/UI/cypress/integration/isr-validation.test.js", "pages/api/reservations/__mocks__/__mocks__"],
   "exclude": ["node_modules"]
 }

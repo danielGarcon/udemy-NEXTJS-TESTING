@@ -2,8 +2,8 @@
 
 // import { resetDb } from "../../__tests__/__mocks__/db/utils/reset-db";
 // import { generateNewBand } from "../../__tests__/__mocks__/fakeData/newBand";
-import { generateNewReservation } from "../../__tests__/__mocks__/fakeData/newReservation";
-import { generateRandomId } from "../../lib/features/reservations/utils";
+import { generateNewReservation } from "../../../__tests__/__mocks__/fakeData/newReservation";
+import { generateRandomId } from "../../../lib/features/reservations/utils";
 
 const ONE_SECOND = 1000;
 const THIRTY_SECONDS = 30 * ONE_SECOND;

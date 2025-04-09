@@ -1,5 +1,5 @@
-import { generateNewBand } from "../../__tests__/__mocks__/fakeData/newBand";
-import { generateRandomId } from "../../lib/features/reservations/utils";
+import { generateNewBand } from "../../../__tests__/__mocks__/fakeData/newBand";
+import { generateRandomId } from "../../../lib/features/reservations/utils";
 
 it("should load refrehsed page from cache after new band is added", () => {
   // check that new band is not on the page
